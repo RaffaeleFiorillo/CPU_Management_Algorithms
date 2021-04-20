@@ -1,29 +1,17 @@
-from os import system
-from random import randint,random
+import resources as r
 
-def mostrar_algoritmo():
-    system("cls")
-    print("#########################################################################\n########################          FCFS          #########################\n#########################################################################\n")
+algorithm_name = "FCFS"
 
-def sair():
-    escolha = input("Deseja voltar ao Menu?\n  Sim............1\n  Nao............2 ")
-    if escolha == "1":
-        system("python Menu.py")
-    else:
-        system("cls")
-        print("Obrigado,ate a proxima!!!")
 
 #################### implementaçao do algoritmo ###################################
-def calcular_t_espera(tempo_atual,tempo_chegada):
-    if tempo_chegada>=tempo_atual:
-        return 0
-    return tempo_atual-tempo_chegada
 
 def esperar(processos,tempo_atual):
     if processos[0].tempo_chegada>tempo_atual:
         tempo=processos[0].tempo_chegada-tempo_atual
         for i in range(tempo):
-            print("-------------------------------------------\ninstante: %d -> Sem processos a serem executados\n-------------------------------------------\n" %i)
+            print("---------------------------------------------\n"
+                  f"Instante: {i} -> Sem processos a serem executados\n"
+                  "---------------------------------------------\n")
         return tempo
     else:
         return 0
@@ -41,7 +29,7 @@ def FCFS(processos,inicio):
                 comeco=False
                 comeco2=True
             elif comeco==False:
-                tempo_de_espera=calcular_t_espera(tempo_atual,proc.tempo_chegada)
+                tempo_de_espera=r.get_waiting_time_1(tempo_atual,proc.tempo_chegada)
                 if proc.tempo_chegada> tempo_atual:
                     for i in range(proc.tempo_chegada-tempo_atual):
                         print("-------------------------------------------\ninstante: %d -> Sem processos a serem executados\n-------------------------------------------\n" %(i+tempo_atual))
@@ -53,24 +41,12 @@ def FCFS(processos,inicio):
     print("\n----------------------------------------------------------------\nO processamento terminou no instante: %fseg.o tempo medio de espera é: %f seg\n----------------------------------------------------------------\n"%(tempo_atual,sum(tempos_de_espera)/len(tempos_de_espera)))
 
 ####################      criar processos     ######################################
-class Processo (object):
-    def __init__ (self,num,tc,te):
-        self.nome = "P"+str(num)
-        self.tempo_chegada=int(tc)
-        self.tempo_exec = int(te)
-        self.estado=False
-        if random()<=50:
-            self.type="CPU-Bound"
-        else:
-            self.type="I/O-Bound"
-        self.waiting_time=0
-        self.ordem=0
 
 
 def criar_processos(numero):
     processos=[]
     for n in range(numero):
-        processos.append(Processo(n+1,input("Introduzir tempo de chegada do processo %d: "%n),input("Introduzir tempo de execuçao do processo %d: "%n)))
+        processos.append(r.Process(n+1,input("Introduzir tempo de chegada do processo %d: "%n),input("Introduzir tempo de execuçao do processo %d: "%n)))
         #processos.append(Processo(n, randint(1,20),randint(1,20)))
     return processos
 def ordenar_processos(processos):
@@ -84,21 +60,21 @@ def ordenar_processos(processos):
                 proce.ordem=1
     return proc
 
-#################### parametros do algoritmo ######################################
-mostrar_algoritmo()
+
+# ------------------------------------- parametros do algoritmo ---------------------------------------------
+r.display_algorithm_name(algorithm_name)
 processos=criar_processos(int(input("Quantos processos deseja criar? ")))
-#processos=criar_processos(randint(1,10))
+# processos=criar_processos(randint(1,10))
 if len(processos)==0:
-######################## sair do algoritmo atual ###################################
-    sair()
+    r.exit_menu()  # exits current algorithm
 else:
-    mostrar_algoritmo()
+    r.display_algorithm_name(algorithm_name)
     ordenados=ordenar_processos(processos)
     print("Tabela de Processos:")
     for ord in ordenados:
         print("nome:|%s| tempo de chegada:%d; tempo de execuçao: %d"%(ord.nome,ord.tempo_chegada,ord.tempo_exec))
     print()
-    FCFS(ordenados,int(input("Qual é o instante inicial: ")))
-    sair()
+    FCFS(ordenados, int(input("Qual é o instante inicial: ")))
+    r.exit_menu()
 
 

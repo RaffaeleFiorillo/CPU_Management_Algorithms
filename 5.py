@@ -1,9 +1,8 @@
 from os import system
-from random import randint,random
+import resources as r
 
-def mostrar_algoritmo():
-    system("cls")
-    print("#########################################################################\n#######################       Round-Robin       #########################\n#########################################################################\n")
+algorithm_name = "Round-Robin"
+
 
 def sair():
     escolha = input("Deseja voltar ao Menu?\n  Sim............1\n  Nao............2 ")
@@ -30,12 +29,6 @@ def remover_processos(processos):
             tempos.append(sum(proc.tempo_espera)/len(proc.tempo_espera))
     return [proc2,tempos]
 
-def calcular_tempo_espera(tempos):
-    tempo_de_espera=[]
-    for t in tempos:
-        if len(t)!=0:
-            tempo_de_espera.append(sum(t)/len(t))
-    return sum(tempo_de_espera)/len(tempo_de_espera)
 
 def Round_Robin(processos,inicio,quantum):
     tempo_atual=inicio
@@ -81,29 +74,20 @@ def Round_Robin(processos,inicio,quantum):
         tempos.append(result[1])
         if len(processos) == 0:
             break
-    tempo_medio_espera=calcular_tempo_espera(tempos)
+    tempo_medio_espera=r.get_waiting_time_5(processos)
     print("\n----------------------------------------------------------------\nO processamento terminou no instante: %fseg.o tempo medio de espera é: %f seg"%(tempo_atual,tempo_medio_espera))
 
-####################      criar processos     ######################################
-class Processo (object):
-    def __init__ (self,num,tc,te):
-        self.nome = "P"+str(num)
-        self.tempo_chegada=int(tc)
-        self.tempo_exec = int(te)
-        self.estado=False
-        self.tempo_espera = []
-        self.ordem = 0
-        if random()<=50:
-            self.type="CPU-Bound"
-        else:
-            self.type="I/O-Bound"
 
+####################      criar processos     ######################################
 def criar_processos(numero):
     processos=[]
     for n in range(numero):
-        processos.append(Processo(n+1,input("Introduzir tempo de chegada do processo %d: "%n),input("Introduzir tempo de execuçao do processo %d: "%n)))
-        #processos.append(Processo(n, randint(1,20),randint(1,20)))
+        processos.append(r.Process(n+1, input(f"Introduzir tempo de chegada do processo {n}: "),
+                                   input(f"Introduzir tempo de execuçao do processo {n}: ")))
+        # processos.append(r.Process(n, randint(1,20),randint(1,20)))
     return processos
+
+
 def ordenar_processos(processos):
     proc,tempos=[],[]
     for processo in processos:
@@ -116,14 +100,14 @@ def ordenar_processos(processos):
     return proc
 
 #################### parametros do algoritmo ######################################
-mostrar_algoritmo()
+r.display_algorithm_name(algorithm_name)
 processos=criar_processos(int(input("Quantos processos deseja criar? ")))
 #processos=criar_processos(randint(1,10))
 if len(processos)==0:
 ######################## sair do algoritmo atual ###################################
     sair()
 else:
-    mostrar_algoritmo()
+    r.display_algorithm_name(algorithm_name)
     ordenados=ordenar_processos(processos)
     print("Tabela de Processos:")
     for ordenado in ordenados:

@@ -1,9 +1,9 @@
 from os import system
 from random import randint,random
+import resources as r
 
-def mostrar_algoritmo():
-    system("cls")
-    print("#########################################################################\n#######################     Por Prioridade     ##########################\n#########################################################################\n")
+algorithm_name = "Por Prioridade"
+
 
 def sair():
     escolha = input("Deseja voltar ao Menu?\n  Sim............1\n  Nao............2 ")
@@ -13,21 +13,8 @@ def sair():
         system("cls")
         print("Obrigado,ate a proxima!!!")
 
+
 #################### implementaçao do algoritmo ###################################
-def calcular_t_espera(processos):
-    tempos=[]
-    for p in processos:
-        tem=[]
-        for i in p.tempo_espera:
-            if p.tempo_espera.index(i)==0:
-                tem.append(i)
-            else:
-                if i !=0:
-                    tem.append(i)
-
-        tempos.append(sum(tem)/len(tem))
-    return sum(tempos)/len(tempos)
-
 def escolher_proximo(processos,tempo_atual):
     prioridade=5000
     estados=[]
@@ -96,7 +83,7 @@ def Por_Prioridade(processos, inicio):
             processos[indx].estado2=False
         else:
             processos[indx].estado2=True
-    tempo_medio_espera=calcular_t_espera(processos)
+    tempo_medio_espera=r.get_waiting_time_3(processos)
     print("\n----------------------------------------------------------------\nO processamento terminou no instante: %fseg.o tempo medio de espera é: %f seg\n----------------------------------------------------------------\n"%(tempo_atual,tempo_medio_espera))
 
 ####################      criar processos     ######################################
@@ -134,14 +121,14 @@ def ordenar_processos(processos):
     return proc
 
 #################### parametros do algoritmo ######################################
-mostrar_algoritmo()
+r.display_algorithm_name(algorithm_name)
 #processos=criar_processos(int(input("Quantos processos deseja criar? ")))
 processos=criar_processos(randint(1,10))
 if len(processos)==0:
 ######################## sair do algoritmo atual ###################################
     sair()
 else:
-    mostrar_algoritmo()
+    r.display_algorithm_name(algorithm_name)
     ordenados=ordenar_processos(processos)
     print("Tabela de Processos:")
     for ordenado in ordenados:
