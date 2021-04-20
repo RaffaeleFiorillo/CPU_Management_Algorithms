@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf05a503-0366-4993-a6f9-25a641816a21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Algoritmos de Escalonamento.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Algoritmos de Escalonamento.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="cf05a503-0366-4993-a6f9-25a641816a21" name="Default Changelist" comment="Clean up: part 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1.py" beforeDir="false" afterPath="$PROJECT_DIR$/1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2.py" beforeDir="false" afterPath="$PROJECT_DIR$/2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3.py" beforeDir="false" afterPath="$PROJECT_DIR$/3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4.py" beforeDir="false" afterPath="$PROJECT_DIR$/4.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/5.py" beforeDir="false" afterPath="$PROJECT_DIR$/5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,6 +182,14 @@
       <option name="presentableId" value="Default" />
       <updated>1580049341030</updated>
     </task>
+    <task id="LOCAL-00001" summary="Clean up: part 1">
+      <created>1618944399692</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618944399692</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,5 +202,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Clean up: part 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up: part 1" />
   </component>
 </project>

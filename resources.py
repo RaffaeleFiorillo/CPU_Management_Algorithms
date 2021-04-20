@@ -65,3 +65,16 @@ def get_waiting_time_5(times):
         if len(t)!=0:
             tempo_de_espera.append(sum(t)/len(t))
     return sum(tempo_de_espera)/len(tempo_de_espera)
+
+
+def display_process_end(tempo_atual, tempos_de_espera, p_type=0):
+    if p_type==0:
+        print("\n----------------------------------------------------------------\n"
+              f"O processamento terminou no instante: {tempo_atual}seg. O tempo médio de espera é:"
+              f" {sum(tempos_de_espera)/len(tempos_de_espera)} seg\n"
+              "----------------------------------------------------------------\n")
+    elif p_type == 1:
+        print("\n----------------------------------------------------------------\n"
+              f"O processamento terminou no instante: {tempo_atual}seg. O tempo médio de espera é:"
+              f" {tempos_de_espera} seg\n"
+              "----------------------------------------------------------------\n")
