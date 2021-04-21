@@ -1,5 +1,5 @@
 import resources as r
-
+from random import randint
 algorithm_name = "SJF(nao-preemptivo)"
 
 
@@ -62,9 +62,9 @@ def SJF_N_preemptivo(processos_in, inicio):
 def criar_processos(numero):
     processos_in = []
     for n in range(numero):
-        processos_in.append(r.Process(n + 1, input("Introduzir tempo de chegada do processo %d: " % n),
-                            input("Introduzir tempo de execuçao do processo %d: " % n)))
-        # processos_in.append(Processo(n, randint(1,20),randint(1,20)))
+        """processos_in.append(r.Process(n + 1, input("Introduzir tempo de chegada do processo %d: " % n),
+                            input("Introduzir tempo de execuçao do processo %d: " % n)))"""
+        processos_in.append(r.Process(n, randint(1, 20), randint(1, 20)))
     return processos_in
 
 

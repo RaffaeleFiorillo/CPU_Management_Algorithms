@@ -39,6 +39,7 @@ def display_algorithm_name(name):
 
 
 def get_waiting_time_1(current_time, arrival_time):
+    print("hjhvmvgvhgvhgv", current_time, arrival_time)
     if arrival_time>=current_time:
         return 0
     return current_time-arrival_time
@@ -60,14 +61,12 @@ def get_waiting_time_3(processes):
 
 
 def get_waiting_time_5(times):
-    tempo_de_espera=[]
-    for t in times:
-        if len(t)!=0:
-            tempo_de_espera.append(sum(t)/len(t))
-    return sum(tempo_de_espera)/len(tempo_de_espera)
+    tempo_de_espera = [sum(t)/len(t) for t in times if len(t) !=0]
+    return sum(tempo_de_espera)/len(tempo_de_espera) if tempo_de_espera != [] else 0
 
 
 def display_process_end(tempo_atual, tempos_de_espera, p_type=0):
+    print("dfasdfasdfa", tempos_de_espera)
     if p_type==0:
         print("\n----------------------------------------------------------------\n"
               f"O processamento terminou no instante: {tempo_atual}seg. O tempo médio de espera é:"

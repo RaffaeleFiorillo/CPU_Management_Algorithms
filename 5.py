@@ -5,11 +5,7 @@ algorithm_name = "Round-Robin"
 
 # ----------------------------------- implementaçao do algoritmo --------------------------------------
 def gerar_lista(processos_in, tempo_atual):
-    proc = []
-    for processo in processos_in:
-        if processo.arrival_time <= tempo_atual:
-            proc.append(processos_in.index(processo))
-    return proc
+    return [processos_in.index(processo) for processo in processos_in if processo.arrival_time<=tempo_atual]
 
 
 def remover_processos(processos_in):
