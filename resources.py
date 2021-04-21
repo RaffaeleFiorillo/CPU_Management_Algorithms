@@ -78,3 +78,15 @@ def display_process_end(tempo_atual, tempos_de_espera, p_type=0):
               f"O processamento terminou no instante: {tempo_atual}seg. O tempo médio de espera é:"
               f" {tempos_de_espera} seg\n"
               "----------------------------------------------------------------\n")
+
+
+def ordenar_processos(processos_in):
+    proc, tempos = [], []
+    for processo in processos_in:
+        tempos.append(processo.arrival_time)
+    for i in sorted(tempos):
+        for proce in processos_in:
+            if proce.arrival_time == i and proce.ordem == 0:
+                proc.append(proce)
+                proce.ordem = 1
+    return proc

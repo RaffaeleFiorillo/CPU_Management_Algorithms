@@ -94,18 +94,6 @@ def criar_processos(numero):
     return processos_in
 
 
-def ordenar_processos(processos_in):
-    proc, tempos = [], []
-    for processo in processos_in:
-        tempos.append(processo.arrival_time)
-    for i in sorted(tempos):
-        for proce in processos_in:
-            if proce.arrival_time == i and proce.ordem == 0:
-                proc.append(proce)
-                proce.ordem = 1
-    return proc
-
-
 # ------------------------------------- parametros do algoritmo ---------------------------------------------
 r.display_algorithm_name(algorithm_name)
 processos = criar_processos(int(input("Quantos processos deseja criar? ")))
@@ -114,7 +102,7 @@ if len(processos) == 0:
     r.exit_menu()
 else:
     r.display_algorithm_name(algorithm_name)
-    ordenados = ordenar_processos(processos)
+    ordenados = r.ordenar_processos(processos)
     print("Tabela de Processos:")
     for ordenado in ordenados:
         print("nome:|%s| tempo de chegada:%f; tempo de execuçao: %f" % (
